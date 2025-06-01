@@ -1,4 +1,4 @@
-import  java.util.*;
+import java.util.*;
 
 public class TaxiBookingSystem {
   static List<Taxi> taxis = new ArrayList<>();
@@ -9,8 +9,8 @@ public class TaxiBookingSystem {
     System.out.println("Enter No of Taxis : ");
     int numTaxis = scan.nextInt();
     initializeTaxis(numTaxis);
-    
-    while (true){
+
+    while (true) {
       System.out.println("\n1. Book_Taxi \n2. Display_Details \n3. Exit");
       System.out.println("Enter your choice : ");
 
@@ -34,12 +34,12 @@ public class TaxiBookingSystem {
   }
 
   public static void initializeTaxis(int n) {
-    for (int i=1; i <= n; i++) {
+    for (int i = 1; i <= n; i++) {
       taxis.add(new Taxi(i));
     }
   }
 
-  public static void bookTaxi(){
+  public static void bookTaxi() {
     int customerId = customerCount++;
     System.out.println("Enter Pickup point (A-F) : ");
     char pickup = scan.next().toUpperCase().charAt(0);
@@ -49,28 +49,28 @@ public class TaxiBookingSystem {
 
     System.out.println("Enter pickup time (in hours) : ");
     int pickupTime = scan.nextInt();
-  
+
     Taxi selectedTaxi = null;
     int minDistance = Integer.MAX_VALUE;
 
-    for (Taxi taxi : taxis){
-      // check taxi available at pickup time 
-      if (taxi.isAvailable(pickupTime)){
-        // Distance b/w curr location and pickup point 
+    for (Taxi taxi : taxis) {
+      // check taxi available at pickup time
+      if (taxi.isAvailable(pickupTime)) {
+        // Distance b/w curr location and pickup point
         int distance = Math.abs(taxi.currentPoint - pickup);
         // select taxi with min distance or low earnings if distance are equal
-        if(distance < minDistance || 
-            (distance == minDistance && taxi.totalEarnings < selectedTaxi.totalEarnings)){
+        if (distance < minDistance ||
+            (distance == minDistance && taxi.totalEarnings < selectedTaxi.totalEarnings)) {
 
           selectedTaxi = taxi;
           minDistance = distance;
         }
       }
     }
-    
-    if(selectedTaxi == null){
+
+    if (selectedTaxi == null) {
       System.out.println("Unable to Book taxi ..");
-      return ;
+      return;
     }
     int dropTime = pickupTime + Math.abs(drop - pickup);
     int amount = selectedTaxi.calculateEarnings(pickup, drop);
@@ -82,19 +82,18 @@ public class TaxiBookingSystem {
     System.out.println("Taxi-" + selectedTaxi.id + "is allocated");
     selectedTaxi.totalEarnings += amount;
 
-
   }
 
   public static void displaytaxiDetails() {
-    for(Taxi taxi : taxis){
+    for (Taxi taxi : taxis) {
       System.out.println("-".repeat(80));
       System.out.println("Taxi-" + taxi.id + " total Earnings : Rs " + taxi.totalEarnings);
       System.out.printf("%-10s %-10s %-5s %-5s %-12s %-9s %6s%n",
-          "BookingID", "CustomerD", "From", "TO", "PickupTime","DropTime", "Amount" );
+          "BookingID", "CustomerD", "From", "TO", "PickupTime", "DropTime", "Amount");
 
-      for(Booking booking : taxi.bookings){
+      for (Booking booking : taxi.bookings) {
         System.out.printf("%-10d %-10d %-5c %-5c %-12d %-9d %-6d%n",
-            booking.bookingId, booking.customerId, booking.from, booking.to, 
+            booking.bookingId, booking.customerId, booking.from, booking.to,
             booking.pickupTime, booking.dropTime, booking.amount);
       }
     }
