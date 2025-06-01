@@ -3,4 +3,4 @@
 practicing zoho interview questions .
 #decentralization
 
-Just want to review code after times and not to lost anything ..
+Just want to review code after times and not to lose anything ..
