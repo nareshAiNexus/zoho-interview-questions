@@ -53,6 +53,16 @@ public class ShortestPath {
 
 
     displayMatrix(matrix);
-  
+    
+    int shortestPath = findShortestPath(aRow, aCol, dRow, dCol);
+
+    System.out.println("The shortest path is : " + shortestPath);
+  }
+
+  private static int findShortestPath(int x1, int x2, int y1, int y2){
+    
+    // EUCLIDEAN'S SHORTEST DISTANCE FORMULA
+
+    return Math.max((x2 - x1), (y2 - y1));
   }
 }
