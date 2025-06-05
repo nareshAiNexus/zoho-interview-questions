@@ -59,7 +59,7 @@ public class ShortestPath {
     System.out.println("The shortest path is : " + shortestPath);
   }
 
-  private static int findShortestPath(int x1, int x2, int y1, int y2){
+  private static int findShortestPath(int x1, int y1, int x2, int y2){
     
     // EUCLIDEAN'S SHORTEST DISTANCE FORMULA
 
