@@ -3,7 +3,7 @@ import java.util.*;
 public class TicketSystem {
   
   // AVAILABLE BERTHS
-  private final List<String> availableBerths = new Array<>(Arrays.asList("L", "M", "U")); // 3
+  private final List<String> availableBerths = new ArrayList<>(Arrays.asList("L", "M", "U")); // 3
 
   // RAC BOOKING QUEUE
   private final Queue<Passenger> racQueue = new LinkedList<>();
@@ -12,7 +12,7 @@ public class TicketSystem {
   private final Queue<Passenger> waitingList = new LinkedList<>();
 
   // CONFIRMED PASSENGERS
-  private final List<Passengers> confirmedPassengers = new ArrayList<>();
+  private final List<Passenger> confirmedPassengers = new ArrayList<>();
 
   int ticketCounter = 0;
 
@@ -20,22 +20,20 @@ public class TicketSystem {
     String ticketId = "T" + ticketCounter++;
     Passenger passenger;
 
-    if(!availableBerth.isEmpty()){
-      String allocattedberth = allocateBerth(age, gender, berthPrefered);
+    if(!availableBerths.isEmpty()){
+      String allocattedBerth = allocateBerth(age, gender, berthPrefered);
 
       // CREATE NEW PASSENGER 
-      passenger = new Passenger(name, age, gender, berthPrefered, allocatedBerth, ticketId);
+      passenger = new Passenger(name, age, gender, berthPrefered, allocattedBerth, ticketId);
       confirmedPassengers.add(passenger);
-      availableBerths.remove(allocattedberth);
-
-
+      availableBerths.remove(allocattedBerth);
     }
 
   }
 
-  public static void allocateBerth(int age, char gender, String prefered){
+  public String allocateBerth(int age, char gender, String prefered){
 
-    if(age > 60 ||| gender.equalsIgnoreCase('f') && availableBerths.contains("L")){
+    if(age > 60 || gender == 'F' && availableBerths.contains("L")){
       return "L";
     }
     if(availableBerths.contains(prefered)){

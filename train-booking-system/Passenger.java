@@ -1,14 +1,14 @@
 public class Passenger {
   String name;
-  int age;
   char gender;
-  char berthPrefered;
-  char allottedBerth;
-  int ticketId;
+  int age;
+  String ticketId;
+  String berthPrefered;
+  String allottedBerth;
 
   public Passenger(
       String name, int age, char gender, 
-      char berthPrefered, char allottedBerth, int ticketId){
+      String berthPrefered, String allottedBerth, String ticketId){
 
     this.name = name;
     this.age = age;
