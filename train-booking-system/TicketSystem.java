@@ -27,6 +27,21 @@ public class TicketSystem {
       passenger = new Passenger(name, age, gender, berthPrefered, allocattedBerth, ticketId);
       confirmedPassengers.add(passenger);
       availableBerths.remove(allocattedBerth);
+      confirmedPassengers.add(passenger);
+      System.out.println("Ticket Booked : " + passenger);
+    }
+    else if (racQueue.size() < 1) {
+      passenger = new Passenger(name, age, gender, berthPrefered, "RAC", ticketId); 
+      racQueue.offer(passenger);
+      System.out.println("Ticket in RAC : " + passenger);       
+    }
+    else if (waitingList.size() < 1){
+      passenger = new Passenger(name, age, gender, berthPrefered, "Waiting", ticketId); 
+      waitingList.offer(passenger);
+      System.out.println("Ticket in Waiting List : " + passenger);   
+    }
+    else{
+      System.out.println("No Tickets available : ");
     }
 
   }
@@ -42,5 +57,40 @@ public class TicketSystem {
 
     return availableBerths.get(0);
   }
+
+  public void cancelTicket(String ticketId){
+    Optional<Passenger> passengerOpt = confirmedPassengers.stream()
+      .filter(p -> p.ticketId.equals(ticketId))
+      .findFirst();
+
+      if (passengerOpt.isPresent()){
+        Passenger passenger = passengerOpt.get();
+        confirmedPassengers.remove(passenger);
+        availableBerths.add(passenger.allottedBerth);
+
+        if (!racQueue.isEmpty()){
+          Passenger racPassenger = racQueue.poll();
+          String allocateBerth = allocateBerth(racPassenger.age, racPassenger.gender, racPassenger.berthPrefered);
+          racPassenger.allottedBerth = allocateBerth;
+          confirmedPassengers.add(racPassenger);
+          availableBerths.remove(allocateBerth);
+          System.out.println("RAC ticket moved to confirmed");
+        }
+        if (!waitingList.isEmpty()){
+        Passenger waitingPassenger = waitingList.poll();
+        racQueue.offer(waitingPassenger);
+        waitingPassenger.allottedBerth = "RAC";
+        System.out.println("Waiting list ticket list moved to RAC");
+
+        }
+        System.out.println("Ticket Cancelled Succesfully for ticketId " + ticketId);
+      }
+      else{
+        System.out.println("TicketId was not found...");
+      }
+
+
+  }
   
 }
+
