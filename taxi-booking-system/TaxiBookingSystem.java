@@ -17,17 +17,13 @@ public class TaxiBookingSystem {
       int choice = scan.nextInt();
 
       switch (choice) {
-        case 1:
-          bookTaxi();
-          break;
-        case 2:
-          displaytaxiDetails();
-          break;
-        case 3:
-          System.out.println("Exiting ...");
-          return;
-        default:
-          System.out.println("Invalid Entry ? ");
+        case 1 -> bookTaxi();
+        case 2 -> displaytaxiDetails();
+        case 3 -> {
+            System.out.println("Exiting ...");
+            return;
+            }
+        default -> System.out.println("Invalid Entry ? ");
       }
     }
 

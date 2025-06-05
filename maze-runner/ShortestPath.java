@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-
-
 public class ShortestPath {
   
   // METHOD TO DISPLAY THE MATRIX
