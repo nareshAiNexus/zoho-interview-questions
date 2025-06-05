@@ -91,6 +91,38 @@ public class TicketSystem {
 
 
   }
-  
+ 
+  public void bookingTicket(){
+    if(confirmedPassengers.isEmpty()){
+      System.out.println("No confirmed tickets ...");
+    }
+    else{
+      System.out.println("Confirmed Tickets : ");
+
+      for(Passenger passenger : confirmedPassengers){
+        System.out.println(passenger);
+      }
+    }
+  }
+
+  public void printAvailableTickets(){
+    System.out.println("Available Berths : " + availableBerths.size());
+    System.out.println("Available tickets in RAC : " + (1 - racQueue.size()));
+    System.out.println("Available Waiting List Tickets : " + (1 - waitingList.size()));
+  }
+
+  public void viewRacTickets(){
+    if(racQueue.isEmpty()){
+      System.out.println("No RAC Bookings available...");
+    }
+    else{
+      System.out.println("RAC Tickets : ");
+      for (Passenger passenger : racQueue){
+        System.out.println(passenger);
+      }
+      
+    }
+  }
+
 }
 
