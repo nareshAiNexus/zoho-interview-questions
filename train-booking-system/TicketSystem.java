@@ -16,7 +16,7 @@ public class TicketSystem {
 
   int ticketCounter = 0;
 
-  public void bookTicket(String name, int age, char gender, String berthPrefered){
+  public void bookTicket(String name, int age, String gender, String berthPrefered){
     String ticketId = "T" + ticketCounter++;
     Passenger passenger;
 
@@ -46,9 +46,9 @@ public class TicketSystem {
 
   }
 
-  public String allocateBerth(int age, char gender, String prefered){
+  public String allocateBerth(int age, String gender, String prefered){
 
-    if(age > 60 || gender == 'F' && availableBerths.contains("L")){
+    if(age > 60 || gender.equalsIgnoreCase("Female") && availableBerths.contains("L")){
       return "L";
     }
     if(availableBerths.contains(prefered)){
@@ -59,6 +59,7 @@ public class TicketSystem {
   }
 
   public void cancelTicket(String ticketId){
+
     Optional<Passenger> passengerOpt = confirmedPassengers.stream()
       .filter(p -> p.ticketId.equals(ticketId))
       .findFirst();
@@ -88,9 +89,9 @@ public class TicketSystem {
       else{
         System.out.println("TicketId was not found...");
       }
-
-
   }
+
+  
  
   public void bookingTicket(){
     if(confirmedPassengers.isEmpty()){

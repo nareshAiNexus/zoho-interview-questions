@@ -1,13 +1,13 @@
 public class Passenger {
   String name;
-  char gender;
+  String gender;
   int age;
   String ticketId;
   String berthPrefered;
   String allottedBerth;
 
   public Passenger(
-      String name, int age, char gender, 
+      String name, int age, String gender, 
       String berthPrefered, String allottedBerth, String ticketId){
 
     this.name = name;
