@@ -13,9 +13,9 @@ public class TicketBooking {
       System.out.println("3. Display bookings");
       System.out.println("4. Display RAC Bookings");
       System.out.println("5. Display Waiting list");
-      System.out.println("6. Exit");
+      System.out.println("6. Exit\n");
       
-      System.out.println("Enter your choice");
+      System.out.print("Enter your choice : ");
       int choice = scan.nextInt();
       scan.nextLine();
 
@@ -34,14 +34,13 @@ public class TicketBooking {
 
           System.out.print("Prefered Berth (L, M, U): ");
           String preferedBerth = scan.nextLine();
+          scan.next();
+          System.out.println();
 
           // Create Passenger object for each person
           ticketSystem.bookTicket(name, age, gender, preferedBerth);
         }
-        
       }
-      scan.close();
     }
-    
   }
 }
