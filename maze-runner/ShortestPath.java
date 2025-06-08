@@ -5,14 +5,12 @@ public class ShortestPath {
   // METHOD TO DISPLAY THE MATRIX
   public static void displayMatrix(char[][] matrix){
 
-  for(int i=0; i<matrix.length; i++){
-    for(int j=0; j<matrix.length; j++){
-      
-      System.out.print(matrix[i][j] + " ");
-      
-    }
-    System.out.println();
-    }
+      for (char[] matrix1 : matrix) {
+          for (int j = 0; j<matrix.length; j++) {
+              System.out.print(matrix1[j] + " ");
+          }
+          System.out.println();
+      }
   }
 
   public static void main(String[] args) {

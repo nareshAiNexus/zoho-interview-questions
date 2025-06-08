@@ -22,7 +22,6 @@ public class TicketSystem {
 
     if(!availableBerths.isEmpty()){
       String allocattedBerth = allocateBerth(age, gender, berthPrefered);
-      System.out.println(allocattedBerth);
 
       // CREATE NEW PASSENGER 
       passenger = new Passenger(name, age, gender, berthPrefered, allocattedBerth, ticketId);
@@ -49,13 +48,12 @@ public class TicketSystem {
 
   public String allocateBerth(int age, String gender, String prefered){
 
-    if((age > 60 || gender.equalsIgnoreCase("Female")) && availableBerths.contains("L")){
+    if(age > 60 || gender.equalsIgnoreCase("female") && availableBerths.contains(prefered)){
       return "L";
     }
-    if(availableBerths.contains(prefered)){
+    else if(availableBerths.contains(prefered)){
       return prefered;
     }
-
     return availableBerths.get(0);
   }
 
