@@ -1,4 +1,4 @@
-public class Passenger {
+public class TrainPassenger {
   String name;
   String gender;
   int age;
@@ -6,7 +6,7 @@ public class Passenger {
   String berthPrefered;
   String allottedBerth;
 
-  public Passenger(
+  public TrainPassenger(
       String name, int age, String gender, 
       String berthPrefered, String allottedBerth, String ticketId){
 

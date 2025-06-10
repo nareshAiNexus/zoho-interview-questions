@@ -6,36 +6,36 @@ public class TicketSystem {
   private final List<String> availableBerths = new ArrayList<>(Arrays.asList("L", "M", "U")); // 3
 
   // RAC BOOKING QUEUE
-  private final Queue<Passenger> racQueue = new LinkedList<>();
+  private final Queue<TrainPassenger> racQueue = new LinkedList<>();
 
   // WAITING LIST QUEUE
-  private final Queue<Passenger> waitingList = new LinkedList<>();
+  private final Queue<TrainPassenger> waitingList = new LinkedList<>();
 
   // CONFIRMED PASSENGERS
-  private final List<Passenger> confirmedPassengers = new ArrayList<>();
+  private final List<TrainPassenger> confirmedPassengers = new ArrayList<>();
 
   int ticketCounter = 0;
 
   public void bookTicket(String name, int age, String gender, String berthPrefered){
     String ticketId = "T" + ticketCounter++;
-    Passenger passenger;
+    TrainPassenger passenger;
 
     if(!availableBerths.isEmpty()){
       String allocattedBerth = allocateBerth(age, gender, berthPrefered);
 
       // CREATE NEW PASSENGER 
-      passenger = new Passenger(name, age, gender, berthPrefered, allocattedBerth, ticketId);
+      passenger = new TrainPassenger(name, age, gender, berthPrefered, allocattedBerth, ticketId);
       confirmedPassengers.add(passenger);
       availableBerths.remove(allocattedBerth);
       System.out.println("Ticket Booked : " + passenger);
     }
     else if (racQueue.size() < 1) {
-      passenger = new Passenger(name, age, gender, berthPrefered, "RAC", ticketId); 
+      passenger = new TrainPassenger(name, age, gender, berthPrefered, "RAC", ticketId); 
       racQueue.offer(passenger);
       System.out.println("Ticket in RAC : " + passenger);       
     }
     else if (waitingList.size() < 1){
-      passenger = new Passenger(name, age, gender, berthPrefered, "Waiting", ticketId); 
+      passenger = new TrainPassenger(name, age, gender, berthPrefered, "Waiting", ticketId); 
       waitingList.offer(passenger);
       System.out.println("Ticket in Waiting List : " + passenger);   
     }
@@ -58,17 +58,17 @@ public class TicketSystem {
 
   public void cancelTicket(String ticketId){
 
-    Optional<Passenger> passengerOpt = confirmedPassengers.stream()
+    Optional<TrainPassenger> passengerOpt = confirmedPassengers.stream()
       .filter(p -> p.ticketId.equals(ticketId))
       .findFirst();
 
       if (passengerOpt.isPresent()){
-        Passenger passenger = passengerOpt.get();
+        TrainPassenger passenger = passengerOpt.get();
         confirmedPassengers.remove(passenger);
         availableBerths.add(passenger.allottedBerth);
 
         if (!racQueue.isEmpty()){
-          Passenger racPassenger = racQueue.poll();
+          TrainPassenger racPassenger = racQueue.poll();
           String allocateBerth = allocateBerth(racPassenger.age, racPassenger.gender, racPassenger.berthPrefered);
           racPassenger.allottedBerth = allocateBerth;
           confirmedPassengers.add(racPassenger);
@@ -76,7 +76,7 @@ public class TicketSystem {
           System.out.println("RAC ticket moved to confirmed");
         }
         if (!waitingList.isEmpty()){
-        Passenger waitingPassenger = waitingList.poll();
+        TrainPassenger waitingPassenger = waitingList.poll();
         racQueue.offer(waitingPassenger);
         waitingPassenger.allottedBerth = "RAC";
         System.out.println("Waiting list ticket list moved to RAC");
@@ -101,7 +101,7 @@ public class TicketSystem {
     }
     else{
       System.out.println("RAC Tickets : ");
-      for (Passenger passenger : racQueue){
+      for (TrainPassenger passenger : racQueue){
         System.out.println(passenger);
       }
       
@@ -114,7 +114,7 @@ public class TicketSystem {
     }
     else{
       System.out.println("Confirmed Bookings .");
-      for(Passenger passenger  : confirmedPassengers){
+      for(TrainPassenger passenger  : confirmedPassengers){
         System.out.println(passenger);
       }
     }
@@ -126,7 +126,7 @@ public class TicketSystem {
     }
     else{
       System.out.println("WaitingList ...");
-      for(Passenger passenger: waitingList){
+      for(TrainPassenger passenger: waitingList){
         System.out.println(passenger);
       }
     }
