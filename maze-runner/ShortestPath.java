@@ -53,6 +53,8 @@ public class ShortestPath {
     int shortestPath = findShortestPath(aRow, aCol, dRow, dCol);
 
     System.out.println("The shortest path is : " + shortestPath);
+
+    scan.close();
   }
 
   private static int findShortestPath(int x1, int y1, int x2, int y2){
