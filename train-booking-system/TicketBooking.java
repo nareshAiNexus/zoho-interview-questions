@@ -64,6 +64,7 @@ public class TicketBooking {
           return;
         }
       }
+      scan.close();
     }
   }
 }
