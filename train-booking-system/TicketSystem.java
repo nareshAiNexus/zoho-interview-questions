@@ -48,10 +48,10 @@ public class TicketSystem {
 
   public String allocateBerth(int age, String gender, String prefered){
 
-    if((age > 60 || gender.toLowerCase().equals("female") || gender.equals("Female")) && availableBerths.contains(prefered)){
+    if(age > 60 || gender.equalsIgnoreCase("female") && availableBerths.contains("L")){
       return "L";
     }
-    else if(availableBerths.contains(prefered)){
+    if(availableBerths.contains(prefered)){
       return prefered;
     }
     return availableBerths.get(0);

@@ -30,12 +30,10 @@ public class TicketBooking {
           scan.nextLine();
 
           System.out.print("Enter your gender : ");
-          String gender = scan.next();
-
+          String gender = scan.nextLine();
+          
           System.out.print("Prefered Berth (L, M, U): ");
           String preferedBerth = scan.nextLine();
-          scan.next();
-          System.out.println();
 
           // Create Passenger object for each person
           ticketSystem.bookTicket(name, age, gender, preferedBerth);
