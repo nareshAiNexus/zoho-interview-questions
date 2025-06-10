@@ -27,7 +27,6 @@ public class TicketSystem {
       passenger = new Passenger(name, age, gender, berthPrefered, allocattedBerth, ticketId);
       confirmedPassengers.add(passenger);
       availableBerths.remove(allocattedBerth);
-      confirmedPassengers.add(passenger);
       System.out.println("Ticket Booked : " + passenger);
     }
     else if (racQueue.size() < 1) {
@@ -90,26 +89,13 @@ public class TicketSystem {
       }
   }
 
-  public void bookingTicket(){
-    if(confirmedPassengers.isEmpty()){
-      System.out.println("No confirmed tickets ...");
-    }
-    else{
-      System.out.println("Confirmed Tickets : ");
-
-      for(Passenger passenger : confirmedPassengers){
-        System.out.println(passenger);
-      }
-    }
-  }
-
-  public void printAvailableTickets(){
+  public void displayAvailableTickets(){
     System.out.println("Available Berths : " + availableBerths.size());
     System.out.println("Available tickets in RAC : " + (1 - racQueue.size()));
     System.out.println("Available Waiting List Tickets : " + (1 - waitingList.size()));
   }
 
-  public void viewRacTickets(){
+  public void displayRacTickets(){
     if(racQueue.isEmpty()){
       System.out.println("No RAC Bookings available...");
     }
@@ -122,5 +108,28 @@ public class TicketSystem {
     }
   }
 
+  public void displayConfirmedTickets(){
+    if(confirmedPassengers.isEmpty()){
+      System.out.println("No Bookings are confirmed");
+    }
+    else{
+      System.out.println("Confirmed Bookings .");
+      for(Passenger passenger  : confirmedPassengers){
+        System.out.println(passenger);
+      }
+    }
+  }
+
+  public void displayWaitingList(){
+    if(waitingList.isEmpty()){
+      System.out.println("Waiting List was Empty ...");
+    }
+    else{
+      System.out.println("WaitingList ...");
+      for(Passenger passenger: waitingList){
+        System.out.println(passenger);
+      }
+    }
+  }
 }
 

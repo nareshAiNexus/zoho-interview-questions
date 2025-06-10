@@ -8,12 +8,13 @@ public class TicketBooking {
 
     while (true){
 
-      System.out.println("1. Book ticket");
+      System.out.println("\n1. Book ticket");
       System.out.println("2. Cancel ticket");
       System.out.println("3. Display bookings");
-      System.out.println("4. Display RAC Bookings");
-      System.out.println("5. Display Waiting list");
-      System.out.println("6. Exit\n");
+      System.out.println("4. Display Available Tickets");
+      System.out.println("5. Display RAC list");
+      System.out.println("6. Display Waiting list");
+      System.out.println("7. Exit\n");
       
       System.out.print("Enter your choice : ");
       int choice = scan.nextInt();
@@ -37,6 +38,26 @@ public class TicketBooking {
 
           // Create Passenger object for each person
           ticketSystem.bookTicket(name, age, gender, preferedBerth);
+        }
+
+        case 2 -> {
+          System.out.print("Enter the Booking Id : ");
+          String ticketId = scan.nextLine();
+
+          ticketSystem.cancelTicket(ticketId);
+          System.out.println("Your Ticket was cancelled Succesfully : ");
+        }
+        case 3 -> {
+          ticketSystem.displayConfirmedTickets();
+        }
+        case 4 -> {
+          ticketSystem.displayAvailableTickets();
+        }
+        case 5 -> {
+          ticketSystem.displayRacTickets();
+        }
+        case 6 -> {
+          ticketSystem.displayWaitingList();
         }
       }
     }
