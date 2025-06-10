@@ -59,6 +59,10 @@ public class TicketBooking {
         case 6 -> {
           ticketSystem.displayWaitingList();
         }
+        case 7 -> {
+          System.out.println("Exiting ...");
+          return;
+        }
       }
     }
   }

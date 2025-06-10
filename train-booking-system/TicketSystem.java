@@ -47,7 +47,7 @@ public class TicketSystem {
 
   public String allocateBerth(int age, String gender, String prefered){
 
-    if(age > 60 || gender.equalsIgnoreCase("female") && availableBerths.contains("L")){
+    if((age > 60 || gender.equalsIgnoreCase("female")) && availableBerths.contains("L")){
       return "L";
     }
     if(availableBerths.contains(prefered)){
