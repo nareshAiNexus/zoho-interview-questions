@@ -12,6 +12,28 @@ class FlightReservation {
 
   }
 
-  public String bookTicket()
+  public String bookTicket(String flightName, String passengerName, int age, int seats){
+
+    Flight flight = flights.get(flightName);
+    if(flight != null){
+      return flight.bookTickets(passengerName, age, seats);
+    }else{
+      System.out.println("Booking failed : Flight not found");
+      return null;
+    }
+
+  }
+
+  public boolean classTicket(String flightName, String bookingId){
+    
+     Flight flight = flights.get(flightName);
+     if(flight != null){
+      return flight.cancelBooking(bookingId);
+     }
+     else{
+      System.out.println("Cancellation failed : Failed Id not found");
+      return false;
+     }
+  }
 
 }
