@@ -24,8 +24,8 @@ class FlightReservation {
 
   }
 
-  public boolean classTicket(String flightName, String bookingId){
-    
+  public boolean cancelTicket(String flightName, String bookingId){
+
      Flight flight = flights.get(flightName);
      if(flight != null){
       return flight.cancelBooking(bookingId);
@@ -36,4 +36,13 @@ class FlightReservation {
      }
   }
 
+  public void displayFlightDetails(String flightName){
+    Flight flight = flights.get(flightName);
+    if(flight != null){
+      flight.displayDetails();
+    }
+    else{
+      System.out.println("Flight not found");
+    }
+  }
 }
