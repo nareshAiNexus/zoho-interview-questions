@@ -16,9 +16,9 @@
 ## Approach
 
 1. Four classes 
-    - Flight
-    - FLightBooking
-    - FlightPassenger
-    - FLightReservation
+    - Flight -> To store the Flight details
+    - FLightBooking -> To Book the tickets
+    - FlightPassenger -> To store the passenger details
+    - FLightReservation -> Class for Flight Reservation
 
 2. Store the passenger details in FlightPassenger class
