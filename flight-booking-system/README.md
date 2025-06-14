@@ -11,3 +11,14 @@
   a. Refund amount
   b. Price reduces by 200 rupees for every cancelled ticket
 5. Print flight details with passengers
+
+
+## Approach
+
+1. Four classes 
+    - Flight
+    - FLightBooking
+    - FlightPassenger
+    - FLightReservation
+
+2. Store the passenger details in FlightPassenger class
