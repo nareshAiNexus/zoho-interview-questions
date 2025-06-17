@@ -22,3 +22,5 @@
     - FLightReservation -> Class for Flight Reservation
 
 2. Store the passenger details in FlightPassenger class
+3. Create the booking methods in the FLightBooking class 
+4. Create the FLightReservation to reserve tickets
